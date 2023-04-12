@@ -1,9 +1,9 @@
 package com.izak.projects.springbatch.config;
 
+import com.izak.projects.springbatch.bean.StudentBean;
 import com.izak.projects.springbatch.entity.Student;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
@@ -18,7 +18,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@EnableBatchProcessing
+//@EnableBatchProcessing
 public class BatchConfig {
 
     @Autowired
@@ -31,7 +31,9 @@ public class BatchConfig {
      */
     @Bean
     public Job sampleJob(JobRepository jobRepository, Step sampleJob) {
-        return new JobBuilder("sampleJob", jobRepository).start(sampleJob).build();
+        return new JobBuilder("sampleJob", jobRepository)
+                .start(sampleJob)
+                .build();
     }
 
     /**
@@ -40,12 +42,22 @@ public class BatchConfig {
      */
     @Bean
     public Step sampleStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
-        return new StepBuilder("studentProcessor", jobRepository).<Student, Student>chunk(10, transactionManager).reader(jsonItemReader()).writer(itemWriter()).processor(studentProcessor).build();
+        return new StepBuilder("studentProcessor", jobRepository)
+                .<StudentBean, Student>chunk(10, transactionManager)
+                .reader(jsonItemReader())
+                .writer(itemWriter())
+                .processor(studentProcessor)
+                .build();
     }
 
     @Bean
-    public ItemReader<Student> jsonItemReader() {
-        return new JsonItemReaderBuilder<Student>().jsonObjectReader(new JacksonJsonObjectReader<>(Student.class)).resource(new ClassPathResource("Students.json")).name("studentJsonItemReader").saveState(true).build();
+    public ItemReader<StudentBean> jsonItemReader() {
+        return new JsonItemReaderBuilder<StudentBean>()
+                .jsonObjectReader(new JacksonJsonObjectReader<>(StudentBean.class))
+                .resource(new ClassPathResource("Students.json"))
+                .name("studentJsonItemReader")
+//                .saveState(true)
+                .build();
     }
 
     @Bean

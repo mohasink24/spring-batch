@@ -1,22 +1,25 @@
 package com.izak.projects.springbatch.config;
 
+import com.izak.projects.springbatch.bean.StudentBean;
 import com.izak.projects.springbatch.entity.Student;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 @Log4j2
 @Component
-public class StudentProcessor implements ItemProcessor<Student, Student> {
+public class StudentProcessor implements ItemProcessor<StudentBean, Student> {
 
     @Override
-    public Student process(final Student student) {
-        /*String brand = student.getBrand().toUpperCase();
-        String origin = student.getOrigin().toUpperCase();
-        String chracteristics = student.getCharacteristics().toUpperCase();
-
-        Student transformedStudent = new Student(brand, origin, chracteristics);
-        log.info("Converting ( {} ) into ( {} )", student, transformedStudent);*/
-        return new Student();
+    public Student process(final StudentBean studentBean) {
+        if (Objects.isNull(studentBean)) {
+            return null;
+        }
+        Student student = new Student();
+        BeanUtils.copyProperties(studentBean, student);
+        return student;
     }
 }
