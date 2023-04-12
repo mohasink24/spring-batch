@@ -13,11 +13,13 @@ import java.util.Objects;
 @Component
 public class StudentProcessor implements ItemProcessor<StudentBean, Student> {
 
+
     @Override
     public Student process(final StudentBean studentBean) {
         if (Objects.isNull(studentBean)) {
             return null;
         }
+
         Student student = new Student();
         BeanUtils.copyProperties(studentBean, student);
         return student;

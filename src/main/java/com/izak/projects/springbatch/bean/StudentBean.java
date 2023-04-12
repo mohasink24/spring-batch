@@ -4,6 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Student sample bean
+ *
+ * @author Mohasin Kazi
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
