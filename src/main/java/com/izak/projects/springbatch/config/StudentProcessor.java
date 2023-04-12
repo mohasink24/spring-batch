@@ -3,8 +3,10 @@ package com.izak.projects.springbatch.config;
 import com.izak.projects.springbatch.entity.Student;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.stereotype.Component;
 
 @Log4j2
+@Component
 public class StudentProcessor implements ItemProcessor<Student, Student> {
 
     @Override
