@@ -2,12 +2,14 @@ package com.izak.projects.springbatch.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 /**
  * Student Entity
  *
@@ -20,9 +22,10 @@ import lombok.Setter;
 public class Student {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Getter
-    @Setter
+//    @Setter
     private Long id;
 
 
