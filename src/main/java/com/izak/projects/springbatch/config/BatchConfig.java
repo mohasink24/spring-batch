@@ -17,6 +17,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
+/**
+ * Batch configuration
+ *
+ * @author Mohasin Kazi
+ */
 @Configuration
 //@EnableBatchProcessing
 public class BatchConfig {

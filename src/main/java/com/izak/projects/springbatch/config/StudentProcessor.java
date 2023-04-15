@@ -10,6 +10,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
+/**
+ * Student Processing goes here
+ *
+ * @author Mohasin Kazi
+ */
 @Log4j2
 @Component
 public class StudentProcessor implements ItemProcessor<StudentBean, Student> {
@@ -20,6 +25,7 @@ public class StudentProcessor implements ItemProcessor<StudentBean, Student> {
         if (Objects.isNull(studentBean)) {
             return null;
         }
+        log.info("Processing student : {} {}", studentBean.getFirstName(), studentBean.getLastName());
         Student student = new Student();
         BeanUtils.copyProperties(studentBean, student);
         return student;
