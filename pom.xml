@@ -9,10 +9,10 @@
         <relativePath/>
     </parent>
     <groupId>com.izak.projects</groupId>
-    <artifactId>Spring-Batch</artifactId>
+    <artifactId>Spring-Batch-Example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spring Batch</name>
-    <description>Spring Batch</description>
+    <description>Spring Batch Example</description>
     <properties>
         <java.version>19</java.version>
     </properties>
