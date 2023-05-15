@@ -12,6 +12,7 @@
     <artifactId>Spring-Batch-Example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spring Batch</name>
+
     <description>Spring Batch Example</description>
     <properties>
         <java.version>19</java.version>
